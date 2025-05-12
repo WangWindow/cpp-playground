@@ -9,8 +9,9 @@
  * @Descripttion:
 ==============================================================================
 */
-import hello;
+import std;
+using namespace std;
 
 auto main() -> int {
-    say_hello();
+    println("Hello, World!");
 }
