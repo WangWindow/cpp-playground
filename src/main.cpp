@@ -12,10 +12,16 @@
 import std;
 using namespace std;
 
+struct A {
+    int a;
+    int b;
+};
+
 auto main() -> int {
-    const char array[10]{};
+    A a{
+        .a = 1,
+        .b = 2,
+    };
 
-    using T = decltype(array);
-
-    println("typeid(T).name(): {}", typeid(T).name());
+    println("{} {}", a.a, a.b);
 }

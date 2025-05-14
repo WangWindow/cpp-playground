@@ -2,9 +2,6 @@
     "C_Cpp.default.compileCommands": [
         "${workspaceFolder}/build/compile_commands.json"
     ],
-    "markdown.marp.themes": [
-        "./zju.css",
-    ],
     "files.associations": {
         "ostream": "cpp",
         "print": "cpp",
@@ -51,6 +48,8 @@
         "xmemory": "cpp",
         "xstring": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "span": "cpp",
+        "vector": "cpp"
     },
 }
