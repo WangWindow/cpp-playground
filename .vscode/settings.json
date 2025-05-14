@@ -50,6 +50,9 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "span": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ios": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp"
     },
 }

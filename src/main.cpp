@@ -11,16 +11,49 @@
 */
 import std;
 
-template <template <class T1, class T2, class T3> class S>
-class Str {
+template <size_t... args>
+class A {
 public:
-    S<char, std::char_traits<char>, std::allocator<char>> str;
+    void f() {
+        // 形参包展开
+        for (const auto& i : { args... }) {
+            std::print("{}", i);
+        }
+    }
 };
 
+template <typename... Args>
+void f(Args... args) {
+    (
+        // 形参包展开
+        std::print("{}", args),
+        ...); // C++17 折叠表达式
+}
+
+template <std::integral... Args>
+void f2(Args... args) {
+    (std::print("{}", args), ...);
+}
+
+template <template <class T1, class T2> class... args>
+class B {};
+
+// 示例
+template <size_t... args>
+void ff() {
+    size_t array[sizeof...(args)]{ args... };
+    for (const auto& i : array) {
+        std::print("{}", i);
+    }
+}
+
 auto main() -> int {
-    // std::basic_string 是通用模板
-    // std::string 是它的特化
-    Str<std::basic_string> s;
-    s.str = "hello world";
-    std::println("{}", s.str);
+    A<1, 2, 3, 4, 5> a;
+    a.f();
+
+    f(1, 2, 3, 4, "*");
+    endl(std::cout);
+    // f2(1, 2, 3, 4, "*"); // 需要 std::integral 概念约束
+
+    ff<1, 2, 3, 4, 5>();
 }
