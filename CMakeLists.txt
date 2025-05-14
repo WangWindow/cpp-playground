@@ -13,10 +13,10 @@ set(CMAKE_CXX_MODULE_STD ON)
 
 # 添加可执行文件
 add_executable(${EXECUTABLE} src/main.cpp)
-target_sources(${EXECUTABLE}
-    PUBLIC
-        FILE_SET cxx_modules TYPE CXX_MODULES
-        FILES modules/hello.ixx
-    PRIVATE
-        modules/hello.cpp
-)
+# target_sources(${EXECUTABLE}
+#     PUBLIC
+#         FILE_SET cxx_modules TYPE CXX_MODULES
+#         FILES modules/hello.ixx
+#     PRIVATE
+#         modules/hello.cpp
+# )

@@ -7,10 +7,6 @@
             "binaryDir": "${sourceDir}/build/",
             "cacheVariables": {
                 "CMAKE_CXX_COMPILER": "cl.exe"
-            },
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
             }
         }
     ],

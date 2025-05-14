@@ -9,8 +9,16 @@
  * @Descripttion:
 ==============================================================================
 */
-import hello;
+import std;
+
+template <class T, class... Args>
+void print(T v, Args... args) {
+    std::println("{}", v);
+    if constexpr ((0 <=> sizeof...(args)) < 0) {
+        print(args...);
+    }
+}
 
 auto main() -> int {
-    say_hello();
-}
+    print("Hello, World!", 1, 2.0, "3", '4');
+} 
