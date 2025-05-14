@@ -11,19 +11,14 @@
 */
 import std;
 
-template <class... Ts>
-class Overload : public Ts... {
-public:
-    using Ts::operator()...;
-};
-// 形参列表可以被继承
+template <class T, class... Args>
+void print(T v, Args... args) {
+    std::println("{}", v);
+    if constexpr ((0 <=> sizeof...(args)) < 0) {
+        print(args...);
+    }
+}
 
 auto main() -> int {
-    auto a = Overload{ [](int arg) { std::println("int: {}", arg); },
-                       [](double arg) { std::println("double: {}", arg); },
-                       [](auto arg) { std::println("auto: {}", arg); } };
-
-    a(1);
-    a(1.0);
-    a("hello");
-}
+    print("Hello, World!", 1, 2.0, "3", '4');
+} 
