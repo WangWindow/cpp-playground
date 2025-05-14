@@ -9,8 +9,13 @@
  * @Descripttion:
 ==============================================================================
 */
-import hello;
+import std;
+using namespace std;
 
 auto main() -> int {
-    say_hello();
+    const char array[10]{};
+
+    using T = decltype(array);
+
+    println("typeid(T).name(): {}", typeid(T).name());
 }
