@@ -12,11 +12,12 @@
 import std;
 using namespace std;
 
-class X {
-public:
-    X(int) = delete;
-};
-
 auto main() -> int {
-    X x(1); // error: use of deleted function 'X::X(int)'
+    int array[] = {1, 2, 3, 4, 5};
+
+    for(const auto& i : array) {
+        cout << i << " ";
+    }
+
+    println("{}", 0[array]);
 }
