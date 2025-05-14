@@ -10,14 +10,10 @@
 ==============================================================================
 */
 import std;
-using namespace std;
 
 auto main() -> int {
-    int array[] = {1, 2, 3, 4, 5};
+    class std {};
 
-    for(const auto& i : array) {
-        cout << i << " ";
-    }
-
-    println("{}", 0[array]);
+    // std::print("Hello, World!"); // 错误，类 "std" 没有成员 "print"
+    ::std::print("Hello, World!"); // 正确，使用全局命名空间的 std::print
 }
