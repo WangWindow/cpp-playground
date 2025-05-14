@@ -12,16 +12,11 @@
 import std;
 using namespace std;
 
-struct A {
-    int a;
-    int b;
+class X {
+public:
+    X(int) = delete;
 };
 
 auto main() -> int {
-    A a{
-        .a = 1,
-        .b = 2,
-    };
-
-    println("{} {}", a.a, a.b);
+    X x(1); // error: use of deleted function 'X::X(int)'
 }
