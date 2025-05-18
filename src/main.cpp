@@ -9,7 +9,8 @@
  * @Descripttion:
 ==============================================================================
 */
-import std;
+#include <iostream>
+#include <print>
 
 template <class T, class... Args>
 void print(T v, Args... args) {
@@ -21,4 +22,4 @@ void print(T v, Args... args) {
 
 auto main() -> int {
     print("Hello, World!", 1, 2.0, "3", '4');
-} 
+}
