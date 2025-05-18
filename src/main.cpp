@@ -12,14 +12,30 @@
 #include <iostream>
 #include <print>
 
-template <class T, class... Args>
-void print(T v, Args... args) {
-    std::println("{}", v);
-    if constexpr ((0 <=> sizeof...(args)) < 0) {
-        print(args...);
+class T {
+public:
+    template <class... Args>
+    auto operator[](Args&&... args) {
+        ((std::println("{}", args)), ...); // Fold expression to print all arguments
+        // std::println("args: {}", args); // This will not work as args is a pack
     }
-}
+
+    auto operator[](size_t size) {
+        std::println("size: {}", size);
+    }
+
+    template <class T>
+    auto operator[](std::initializer_list<T> init_list) {
+        for (const auto& item : init_list) {
+            std::println("item: {}", item);
+        }
+    }
+};
 
 auto main() -> int {
-    print("Hello, World!", 1, 2.0, "3", '4');
+    T t;
+    t["**", 1, 2, 3];
+    t[5];
+    t[{ 1, 2, 3, 4, 5 }];
+    t[{ "*", "**", "😋" }];
 }
