@@ -12,22 +12,36 @@
 #include <iostream>
 #include <print>
 
-template <size_t... args>          // 形参包
-constexpr size_t v = (args + ...); // 折叠表达式
+// 模板
+template <class T>
+class X {
+public:
+    void f() {
+        std::println("X<T>::f()");
+    }
+};
 
-// 变量模板：
-// 1. 变量模板是一个模板，它定义了一个变量的类型和名称。
-// 2. 变量模板可以用于定义常量、全局变量、静态变量等。
+// 模板特化
+template <>
+class X<double> {
+public:
+    void f(int) {
+        std::println("X<double>::f(int)");
+    }
+};
+
+// 偏特化
+template <class T>
+class X<T*> {
+public:
+    void f(double) {
+        std::println("X<T*>::f(double)");
+    }
+};
 
 auto main() -> int {
-    // 1. 变量模板的定义
-    // 变量模板的定义和函数模板类似，只不过没有参数列表。
-    // 变量模板的类型可以是任意类型，包括内置类型和用户自定义类型。
-    // 变量模板的名称可以是任意合法的标识符。
-
-    // 2. 变量模板的使用
-    // 使用变量模板时，需要指定模板参数的值。
-    // 可以使用 auto 关键字来推导变量模板的类型。
-
-    std::println("{}", v<1, 2, 3, 4, 5>); // 输出15
+    X<int> x;
+    x.f(); // error: 没有匹配的函数调用 'X<int>::f()'
+    // x.f(1.0); // error: 没有匹配的函数调用 'X<int>::f(double)'
+    // x.f("hello"); // error: 没有匹配的函数调用 'X<int>::f(const char*)'
 }
