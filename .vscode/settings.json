@@ -50,6 +50,8 @@
         "vector": "cpp",
         "ios": "cpp",
         "iostream": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "any": "cpp",
+        "optional": "cpp"
     },
 }
