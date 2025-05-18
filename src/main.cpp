@@ -2,23 +2,32 @@
 ==============================================================================
  * @FilePath: main.cpp
  * @Author: WangWindow 1598593280@qq.com
- * @Date: 2025-05-10 20:36:11
+ * @Date: 2025-05-18 11:08:45
  * @LastEditors: WangWindow
- * @LastEditTime: 2025-05-11 18:41:43
+ * @LastEditTime: 2025-05-18 13:08:52
  * @2025 by WangWindow, All Rights Reserved.
  * @Descripttion:
 ==============================================================================
 */
-import std;
 
-template <class T, class... Args>
-void print(T v, Args... args) {
-    std::println("{}", v);
-    if constexpr ((0 <=> sizeof...(args)) < 0) {
-        print(args...);
-    }
+#include <print>
+
+// 函数形参作用域：函数形参（包括 lambda 表达式和形参）或函数局部预定义变量潜在作用域开始于其声明点。
+// - 若最内层的外围函数声明符不是定义的声明符，则潜在作用域结束于该函数声明符的结尾。
+// - 否则，其潜在作用域结束于函数 try 块的最后异常处理块的结尾（若不使用 try 块，则为函数体的结尾）。
+
+void f(int a) try {
+    int v{}; // v 不是定义的声明符，所以作用域结束于函数体的结尾，即 throw 语句的结尾
+    throw "";
+} catch (...) {
+    std::println("{}", a); // a 是函数形参，是定义的声明符，所以作用域结束于 try 块的最后异常处理块的结尾
 }
 
 auto main() -> int {
-    print("Hello, World!", 1, 2.0, "3", '4');
-} 
+    f(1);
+
+    int a{};
+    {
+        int a{}; // 两者的作用域显然不同，不会冲突
+    }
+}

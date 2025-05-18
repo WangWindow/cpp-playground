@@ -1,7 +1,4 @@
 {
-    "C_Cpp.default.compileCommands": [
-        "${workspaceFolder}/build/compile_commands.json"
-    ],
     "files.associations": {
         "ostream": "cpp",
         "print": "cpp",
@@ -53,6 +50,8 @@
         "vector": "cpp",
         "ios": "cpp",
         "iostream": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "any": "cpp",
+        "optional": "cpp"
     },
 }
