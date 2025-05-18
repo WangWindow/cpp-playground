@@ -51,7 +51,8 @@
         "ios": "cpp",
         "iostream": "cpp",
         "istream": "cpp",
-        "any": "cpp",
-        "optional": "cpp"
+        "ranges": "cpp",
+        "climits": "cpp",
+        "array": "cpp"
     },
 }
