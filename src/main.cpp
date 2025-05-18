@@ -12,30 +12,22 @@
 #include <iostream>
 #include <print>
 
-class T {
-public:
-    template <class... Args>
-    auto operator[](Args&&... args) {
-        ((std::println("{}", args)), ...); // Fold expression to print all arguments
-        // std::println("args: {}", args); // This will not work as args is a pack
-    }
+template <size_t... args>          // 形参包
+constexpr size_t v = (args + ...); // 折叠表达式
 
-    auto operator[](size_t size) {
-        std::println("size: {}", size);
-    }
-
-    template <class T>
-    auto operator[](std::initializer_list<T> init_list) {
-        for (const auto& item : init_list) {
-            std::println("item: {}", item);
-        }
-    }
-};
+// 变量模板：
+// 1. 变量模板是一个模板，它定义了一个变量的类型和名称。
+// 2. 变量模板可以用于定义常量、全局变量、静态变量等。
 
 auto main() -> int {
-    T t;
-    t["**", 1, 2, 3];
-    t[5];
-    t[{ 1, 2, 3, 4, 5 }];
-    t[{ "*", "**", "😋" }];
+    // 1. 变量模板的定义
+    // 变量模板的定义和函数模板类似，只不过没有参数列表。
+    // 变量模板的类型可以是任意类型，包括内置类型和用户自定义类型。
+    // 变量模板的名称可以是任意合法的标识符。
+
+    // 2. 变量模板的使用
+    // 使用变量模板时，需要指定模板参数的值。
+    // 可以使用 auto 关键字来推导变量模板的类型。
+
+    std::println("{}", v<1, 2, 3, 4, 5>); // 输出15
 }
