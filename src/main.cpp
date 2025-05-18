@@ -12,24 +12,13 @@
 
 import std;
 
-namespace stdv = std::ranges::views;
+namespace stdr = std::ranges;
 
 auto main() -> int {
     std::array array{ 1, 2, 3, 4, 5 };
-
-    // 先过滤出偶数，再将偶数乘以2
-    for (const auto& i :
-         array | stdv::filter([](int i) { return i % 2 == 0; }) | stdv::transform([](int i) { return i * 2; })) {
-        std::cout << i << ' ';
-    }
-
+    std::copy(array.begin(), array.end(), std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
 
-    int arr[5][5] = {};
-    for (int n = 0; auto& i : arr | stdv::join) {
-        i = ++n;
-    }
-    for (const auto& i : arr | stdv::join) {
-        std::cout << i << ' ';
-    }
+    // 使用 范围, 方便使用
+    stdr::copy(array, std::ostream_iterator<int>(std::cout, " "));
 }
